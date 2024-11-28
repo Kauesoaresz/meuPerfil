@@ -34,67 +34,105 @@
         </div>
     </div>
 
-    <script>
-        // Função para alterar o nome
-        function alterarNome() {
-            const novoNome = prompt("Digite o novo nome");
-            if (novoNome) {
-                document.getElementById("profileName").textContent = "Nome: " + novoNome;
-            }
+  <script>
+    // Função para alterar o nome do perfil
+    function alterarNome() {
+        // Exibe um prompt para o usuário digitar o novo nome
+        const novoNome = prompt("Digite o novo nome");
+
+        // Se o usuário não cancelar e digitar um nome válido, altera o texto do elemento de nome
+        if (novoNome) {
+            // Altera o conteúdo do elemento com id 'profileName' para o novo nome
+            document.getElementById("profileName").textContent = "Nome: " + novoNome;
         }
+    }
 
-        // Função para adicionar um hobby
-        function adicionarHobby() {
-            const novoHobby = prompt("Digite um novo hobby");
-            if (novoHobby) {
-                const li = document.createElement("li");
-                li.textContent = novoHobby;
-                li.className = "list-group-item";
-                document.getElementById("hobbiesList").appendChild(li);
-            }
+    // Função para adicionar um hobby à lista
+    function adicionarHobby() {
+        // Exibe um prompt para o usuário digitar o novo hobby
+        const novoHobby = prompt("Digite um novo hobby");
+
+        // Se o usuário não cancelar e digitar algo, cria um novo item na lista de hobbies
+        if (novoHobby) {
+            // Cria um novo elemento <li> para o hobby
+            const li = document.createElement("li");
+
+            // Define o texto do novo item <li> como o hobby digitado pelo usuário
+            li.textContent = novoHobby;
+
+            // Adiciona a classe 'list-group-item' para estilizar o item na lista (classe do Bootstrap)
+            li.className = "list-group-item";
+
+            // Adiciona o novo item <li> à lista de hobbies (elemento com id 'hobbiesList')
+            document.getElementById("hobbiesList").appendChild(li);
         }
+    }
 
-        // Função para mudar a cor de fundo do card
-        function mudarCorDeFundo() {
-            const cores = ["#f8d7da", "#d1ecf1", "#d4edda", "#fff3cd", "#cce5ff"];
-            const corAleatoria = cores[Math.floor(Math.random() * cores.length)];
-            document.getElementById("profileCard").style.backgroundColor = corAleatoria;
+    // Função para mudar a cor de fundo do card
+    function mudarCorDeFundo() {
+        // Array com algumas cores de fundo possíveis
+        const cores = ["#f8d7da", "#d1ecf1", "#d4edda", "#fff3cd", "#cce5ff"];
+
+        // Seleciona uma cor aleatória do array
+        const corAleatoria = cores[Math.floor(Math.random() * cores.length)];
+
+        // Altera a cor de fundo do card (elemento com id 'profileCard') para a cor selecionada aleatoriamente
+        document.getElementById("profileCard").style.backgroundColor = corAleatoria;
+    }
+
+    // Função para alterar a idade do perfil
+    function novaIdade() {
+        // Exibe um prompt para o usuário digitar a nova idade
+        const novaIdade = prompt("Digite a nova idade");
+
+        // Verifica se o valor digitado é um número válido e não está vazio
+        if (novaIdade && !isNaN(novaIdade) && novaIdade.trim() !== "") {
+            // Altera o conteúdo do elemento com id 'profileAge' para a nova idade
+            document.getElementById("profileAge").textContent = "Idade: " + novaIdade;
+        } else {
+            // Se o valor não for válido, exibe um alerta para o usuário
+            alert("Por favor, insira uma idade válida.");
         }
+    }
 
-        // Função para alterar a idade
-        function novaIdade() {
-            const novaIdade = prompt("Digite a nova idade");
-            if (novaIdade && !isNaN(novaIdade) && novaIdade.trim() !== "") {
-                document.getElementById("profileAge").textContent = "Idade: " + novaIdade;
-            } else {
-                alert("Por favor, insira uma idade válida.");
-            }
+    // Função para alterar a foto de perfil
+    function alterarFoto() {
+        // Exibe um prompt para o usuário digitar a URL de uma nova foto
+        const novaFoto = prompt("Digite a URL da nova foto");
+
+        // Se o usuário não cancelar e digitar algo, altera a imagem de perfil
+        if (novaFoto) {
+            // Altera o atributo 'src' da imagem (elemento com id 'profileImage') para a nova URL
+            document.getElementById("profileImage").src = novaFoto;
         }
+    }
 
-        // Função para alterar a foto de perfil
-        function alterarFoto() {
-            const novaFoto = prompt("Digite a URL da nova foto");
-            if (novaFoto) {
-                document.getElementById("profileImage").src = novaFoto;
-            }
-        }
+    // Função para remover um hobby da lista
+    function removerHobby() {
+        // Exibe um prompt para o usuário digitar o hobby que deseja remover
+        const hobbyParaRemover = prompt("Digite o nome do hobby que você quer remover");
 
-        // Função para remover um hobby
-        function removerHobby() {
-            const hobbyParaRemover = prompt("Digite o nome do hobby que você quer remover");
-            if (hobbyParaRemover) {
-                const listaHobbies = document.getElementById("hobbiesList");
-                const itens = listaHobbies.getElementsByTagName("li");
+        // Se o usuário não cancelar e digitar algo
+        if (hobbyParaRemover) {
+            // Obtém a lista de hobbies (elemento com id 'hobbiesList')
+            const listaHobbies = document.getElementById("hobbiesList");
 
-                for (let i = 0; i < itens.length; i++) {
-                    if (itens[i].textContent === hobbyParaRemover) {
-                        listaHobbies.removeChild(itens[i]);
-                        break; // Remove o primeiro hobby que encontrar
-                    }
+            // Obtém todos os itens <li> da lista
+            const itens = listaHobbies.getElementsByTagName("li");
+
+            // Percorre todos os itens da lista
+            for (let i = 0; i < itens.length; i++) {
+                // Se o texto do item for igual ao hobby que o usuário quer remover
+                if (itens[i].textContent === hobbyParaRemover) {
+                    // Remove o item da lista
+                    listaHobbies.removeChild(itens[i]);
+                    break; // Interrompe o loop após encontrar e remover o hobby
                 }
             }
         }
-    </script>
+    }
+</script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
